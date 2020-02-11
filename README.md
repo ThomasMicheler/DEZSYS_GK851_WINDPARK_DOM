@@ -1,4 +1,3 @@
-# "*TEMPLATE*"
 
 ## Aufgabenstellung
 Name: SYT4-GK831-Document-Middleware-MongoDB
@@ -77,14 +76,15 @@ Anforderungen "zur Gänze erfüllt"
 
 ## Links und Dokumente
 
-Accessing Data with MongoDB https://spring.io/guides/gs/accessing-data-mongodb/
-MongoDB Installation https://docs.mongodb.com/manual/administration/install-community/
-Mongo Shell Quick Reference  https://docs.mongodb.com/manual/reference/mongo-shell/
-Mongo Shell Tutorial  https://www.youtube.com/watch?v=CB9G5Dvv-EE&t=1482s​
-Grundlagen Spring Framework  https://spring.io/
-Spring Boot  https://spring.io/guides/gs/spring-boot/
-Spring Data MongoDB  https://projects.spring.io/spring-data-mongodb/#quick-start
-Spring RESTful Web Service  https://spring.io/guides/gs/rest-service/#use-maven
+* Accessing Data with MongoDB https://spring.io/guides/gs/accessing-data-mongodb/
+* MongoDB Installation https://docs.mongodb.com/manual/administration/install-community/
+* Mongo Shell Quick Reference  https://docs.mongodb.com/manual/reference/mongo-shell/
+* Mongo Shell Tutorial  https://www.youtube.com/watch?v=CB9G5Dvv-EE&t=1482s​
+* Grundlagen Spring Framework  https://spring.io/
+* Spring Boot  https://spring.io/guides/gs/spring-boot/
+* Spring Data MongoDB  https://projects.spring.io/spring-data-mongodb/#quick-start
+* Spring RESTful Web Service  https://spring.io/guides/gs/rest-service/#use-maven
+
 
 ## Implementierung
 
