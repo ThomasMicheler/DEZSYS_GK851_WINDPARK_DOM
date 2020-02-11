@@ -1,7 +1,7 @@
 # "*TEMPLATE*"
 
 ## Aufgabenstellung
-Die detaillierte [Aufgabenstellung](TASK.md) beschreibt die notwendigen Schritte zur Realisierung.
+Siehe "GK8.3.1 Middleware Engineering "Document Oriented Middleware using MongoDB" (Moodle)
 
 ## Implementierung
 
