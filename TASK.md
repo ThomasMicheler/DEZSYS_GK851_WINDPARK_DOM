@@ -1,40 +1,36 @@
-
-## Aufgabenstellung
-Name: SYT4-GK831-Document-Middleware-MongoDB
-GIT repository: https://classroom.github.com/a/ECE6oKay
+# Middleware Engineering "Document Oriented Middleware using MongoDB" - Taskdescription
+Join GIT repository: [https://classroom.github.com/a/4iJH7nWS](https://classroom.github.com/a/4iJH7nWS)  
 
 
 ## Einführung
 
 Diese Übung soll helfen die Funktionsweise und Einsatzmöglichkeiten eines dokumentenorientierten dezentralen Systems mit Hilfe des Frameworks Spring Data MongoDB zu demonstrieren. Die Daten werden in dieser Übung in einem NoSQL Repository gespeichert und verarbeitet.
 
-Es handelt sich um die Fortsetzung von Beispiel zu Windkraftanlagen, GK732 DezSys/Middleware Engineering "Distributed Architecture and Document Formats". Mit Hilfe einer REST Schnittstelle auf den Parkrechnern sollen die Daten an die Zentrale weitergegeben und hier mit Hilfe eines dokumentenorientiertem dezentralen Systems gespeichert werden. Von diesem System können die Daten für verschiedene Anwendungsfälle weiterverarbeitet werden.
+Es handelt sich um die Fortsetzung von Beispiel zu Windkraftanlagen, GEK Middleware Engineering "Message Oriented Middleware". Mit Hilfe einer REST Schnittstelle auf den Parkrechnern sollen die Daten an die Zentrale weitergegeben und hier mit Hilfe eines dokumentenorientiertem dezentralen Systems gespeichert werden. Von diesem System können die Daten für verschiedene Anwendungsfälle weiterverarbeitet werden.
 
 
-
-### Ziele
+## 1.1 Ziele
 
 Das Ziel dieser Übung ist die Implementierung einer dokumentenorientierten Middleware, die die Daten der Windparks zentral in einer entsprechenden Format ablegt.
 
 
-
-## Voraussetzungen
+## 1.2 Voraussetzungen
 
 * Grundlagen zu XML & JSON & REST
 * Grundlagen Architektur von verteilten Systemen
-* Grundlagen Spring Framework [Link] und Spring Boot [Link]
+* Grundlagen Spring Framework und Spring Boot
 * Grundlagen NoSQL
 * Installation MongoDB
-* Implementierung der Aufgabenstellungen bis GK7.3.3 Middleware Engineering "Message Oriented Middleware"
+* Implementierung der Aufgabenstellungen bis GEK Middleware Engineering "Message Oriented Middleware"
 * Umsetzung eines einfachen Web-Userinterfaces zur Anzeige von Daten
 
 
-## Aufgabenstellung
+## 1.3 Aufgabenstellung
 
 Implementieren Sie eine dokumentenorientierte Middleware mit Hilfe von Spring Data MongoDB und holen Sie die aktuellen Daten der REST Schnittstelle der Parkrechner ab. Es sollen dabei keine Daten verloren gehen, sondern stets mit einem Zeitstempel und einem entsprechenden Format in der Zentrale abgespeichert werden. Bedenken Sie, dass die Daten aller Windparks und somit aller Windkraftanlagen zusammentreffen. Entwerfen Sie eine geeignet Datenstruktur, um eine kontinuierliche Speicherung der Daten zu gewährleisten.
 
 
-![Windpark - Zentrale - Document Oriented Middleware](/windpark_dom.jpg "Windpark - Zentrale - Document Oriented Middleware")
+![Windpark - Zentrale - Document Oriented Middleware](dezsys_windpark.png)
 
 Die Daten liegen im JSON- bzw. XML-Format am Parkrechner vor und sollen als JSON-Struktur in MongoDB gespeichert werden. In welchem Format und in welchen Zeitabständen die Daten eintreffen wird von Ihnen, als System Architekt, spezifiziert und implementiert.
 
@@ -43,48 +39,74 @@ Die Daten werden in der Zentrale in einem MongoDB Repository gespeichert und kö
 Ebenso soll ein einfaches Webinterface für die Zentrale implementiert werden, die die Daten anhand einer von Ihnen gewählten Fragestellung auswertet und diese im Browser darstellt. Dabei soll die einfache Verarbeitung der Daten, die im JSON Format vorliegen, aufgezeigt werden.
 
 
+## 1.4 Demo Applikation
 
-## Bewertung
+* Download Docker for MongoDB  
+  `docker pull mongo`  
 
-﻿Gruppengrösse: 1 Person  
-Anforderungen "überwiegend erfüllt"
+* Run Docker for MongoDB (using port 27017, name mongo)  
+  `docker run -d -p 27017:27017 --name mongo mongo`  
 
-* Installation und Konfiguration einer dokumentenorientierten Middleware mit Hilfe von Spring Data MongoDB
-* Entwurf und Umsetzung einer entsprechenden JSON Datenstruktur
-* Speicherung der Daten in einem MongoDB Repository in der Zentrale
-* Formulierung einer sinnvollen Fragestellung für einen Anwendungsfall in der  Zentrale und deren Abfrage in einer Mongo Shell
-* Umsetzung von einem Parkrechner  
+* Run MongoShell on Docker Instance  
+  `docker exec -it mongo bash`
+  `mongo`  
 
-Anforderungen "zur Gänze erfüllt"
-* Konzeption und Implementierung der kontinuierlichen Speicherung der Daten (Cronjob, Scheduler, Trigger, etc.)
-* Implementieren eines Webinterfaces zur Darstellung der Daten (siehe  Fragestellung zu "überwiegend erfüllt")
-* Umsetzung von mehreren Parkrechnern
+* Execute MongoShell Commands  
+	`show dbs`  
+	`use local`  
+	`db.startup_log.count();`  
 
+* Accessing Data with MongoDB and Spring  
+  - Build and Run Exmample  
+	  `mvn clean install`  
+	  `mvn spring-boot:run -Dspring.data.mongodb.uri=mongodb://localhost:27017/customer`  
 
-## Fragestellung für Protokoll
-
-* Nennen Sie 4 Vorteile eines NoSQL Repository im Gegensatz zu einem relationalen DBMS
-* Nennen Sie 4 Nachteile eines NoSQL Repository im Gegensatz zu einem relationalen DBMS
-* Welche Schwierigkeiten ergeben sich bei der Zusammenführung der Daten?
-* Dokumentieren Sie den Quellcode (code snippet) zum Abfragen der Daten der REST Schnittstelle eines Windparks.
-* Dokumentieren Sie die Datenstruktur zum Ablegen der Daten in MongoDB.
-* Mongo Shell: Dokumentieren Sie den Befehl zur Abfrage aller Windkraftdaten, die Windkraftanlage 1 im Dezember 2019 geliefert hat.
-* Mongo Shell:  Dokumentieren Sie den Befehl zur Abfrage der maximalen Windgeschwindigkeiten aller Windkraftanlage vom Windpark 1.
-* Mongo Shell: Dokumentieren Sie den Befehl zum Zurücksetzen der Windgeschwindigkeit (Windgeschwindigkeit = 0) von Windkraftanlage 1 vom Windpark 1 am 31. Dezember 2019.
-
-
-## Links und Dokumente
-
-* Accessing Data with MongoDB https://spring.io/guides/gs/accessing-data-mongodb/
-* MongoDB Installation https://docs.mongodb.com/manual/administration/install-community/
-* Mongo Shell Quick Reference  https://docs.mongodb.com/manual/reference/mongo-shell/
-* Mongo Shell Tutorial  https://www.youtube.com/watch?v=CB9G5Dvv-EE&t=1482s​
-* Grundlagen Spring Framework  https://spring.io/
-* Spring Boot  https://spring.io/guides/gs/spring-boot/
-* Spring Data MongoDB  https://projects.spring.io/spring-data-mongodb/#quick-start
-* Spring RESTful Web Service  https://spring.io/guides/gs/rest-service/#use-maven
+  - Check Data in MongoDB  
+		`docker exec -it mongo bash`  
+		`mongo`  
+		`use test`  
+		`db.windengineData.find()`  
+	  	``
 
 
-## Implementierung
+## 1.5 Bewertung  
 
-## Quellen
+*   Gruppengrösse: 1 Person
+*   Abgabemodus: per Protokoll, bei EK kann ein Abgabegespraech erforderlich sein
+*   Anforderungen **"überwiegend erfüllt"**
+    * Installation und Konfiguration einer dokumentenorientierten Middleware mit Hilfe von Spring Data MongoDB
+    * Entwurf und Umsetzung einer entsprechenden JSON Datenstruktur
+    * Speicherung der Daten in einem MongoDB Repository in der Zentrale
+    * Umsetzung von einem Parkrechner
+    * Beantwortung der Fragestellungen   
+*   Anforderungen **"zur Gänze erfüllt"**
+    * Formulierung 3 sinnvollen Fragestellung für einen Anwendungsfall in der Zentrale und deren Abfragen in einer Mongo Shell
+*  Erweiterte Anforderungen **überwiegend erfüllt**
+    * Umsetzung von mehreren Parkrechnern
+    * Konzeption und Implementierung der kontinuierlichen Speicherung der Daten (Cronjob, Scheduler, Trigger, etc.)
+*  Erweiterte Anforderungen **zur Gänze erfüllt**
+    *   Implementieren eines Webinterfaces zur Darstellung der Daten
+
+## 1.6 Fragestellung für Protokoll
+
++ Nennen Sie 4 Vorteile eines NoSQL Repository im Gegensatz zu einem relationalen DBMS
++ Nennen Sie 4 Nachteile eines NoSQL Repository im Gegensatz zu einem relationalen DBMS
++ Welche Schwierigkeiten ergeben sich bei der Zusammenführung der Daten?
++ Welche Arten von NoSQL Datenbanken gibt es?
++ Nennen Sie einen Vertreter für jede Art?
++ Beschreiben Sie die Abkürzungen CA, CP und AP in Bezug auf das CAP Theorem
++ Mit welchem Befehl koennen Sie die Windgeschwindigkeit von Windkraftanalage 1 vom Windpark 1 in der Shell auf 0 setzen?
+
+## 1.7 Links und Dokumente
+* [Accessing Data with MongoDB](https://spring.io/guides/gs/accessing-data-mongodb/)
+* [MongoDB Installation](https://docs.mongodb.com/manual/administration/install-community/)
+* [mongo Shell Quick Reference](https://docs.mongodb.com/manual/reference/mongo-shell/)
+* [Grundlagen Spring Framework](https://spring.io/)
+* [Spring Boot](https://spring.io/guides/gs/spring-boot/)
+* [Spring Data MongoDB](https://spring.io/projects/spring-data-mongodb)
+* [Spring RESTful Web Service](https://spring.io/guides/gs/rest-service/#use-maven)
+* NoSQL Introduction
+  - [NoSQL on w3resource](https://www.w3resource.com/mongodb/nosql.php)  
+  - [Introduction to NoSQL Database](https://www.edureka.co/blog/introduction-to-nosql-database/)  
+  - [NoSQL im Überblick](https://www.heise.de/ct/artikel/NoSQL-im-Ueberblick-1012483.html)  
+  - [Introduction to NoSQL Databases on YouTube ](https://www.youtube.com/watch?v=2yQ9TGFpDuM)  
