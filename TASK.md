@@ -48,7 +48,7 @@ Ebenso soll ein einfaches Webinterface für die Zentrale implementiert werden, d
   `docker run -d -p 27017:27017 --name mongo mongo`  
 
 * Run MongoShell on Docker Instance  
-  `docker exec -it mongo bash`
+  `docker exec -it mongo bash`   
   `mongo`  
 
 * Execute MongoShell Commands  
